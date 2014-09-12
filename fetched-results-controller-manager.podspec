@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.author = { "Nathan" => "ncooper@uno.edu" }
   s.platform = :ios
   s.requires_arc = true
-  s.source = { :git => "https://github.com/ncooper123/fetched-results-controller-manager.git", :tag => "0.0.1" }
+  s.source = { :git => "https://github.com/ncooper123/fetched-results-controller-manager.git", :branch => "master", :tag => '0.0.1' }
 
   s.source_files = "*.{h,m}"
 
