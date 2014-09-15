@@ -1,21 +1,16 @@
 //
 //  FetchedResultsControllerManager.m
-//  LA Creel
-//
 //  Created by Nathan Cooper on 10/8/13.
-//  Copyright (c) 2013 LDWF. All rights reserved.
 //
 
 #import "FetchedResultsControllerManager.h"
-#import "AppDelegate.h"
-#import "NewItemCell.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 @interface FetchedResultsControllerManager ()
 
-@property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) UITableView* tableView;
 @property (strong, nonatomic) NSFetchedResultsController* fetchedResultsController;
-@property (strong, nonatomic) NSObject<FetchedDataTableViewDelegate> * delegate;
+@property (strong, nonatomic) FetchedDataTableViewDelegate *delegate;
 @property BOOL allowEditing, allowAdding;
 
 @end
@@ -25,14 +20,13 @@
 @synthesize tableView = _tableView;
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize delegate = _delegate;
-@synthesize appDelegate = _appDelegate;
 @synthesize allowEditing = _allowEditing;
 @synthesize allowAdding = _allowAdding;
 
 /**
  * Initializes a FetchedResultsControllerManager with a given UITableView, delegate, and NSFetchedResultsController.
  */
--(id) initWithTableView:(UITableView *)tableView withDelegate:(NSObject<FetchedDataTableViewDelegate> *) delegate withFetchedResultsController:(NSFetchedResultsController *)controller allowEditing:(BOOL)allowEditing allowAdding:(BOOL)allowAdding {
+-(id) initWithTableView:(UITableView *)tableView withDelegate:(FetchedDataTableViewDelegate *) delegate withFetchedResultsController:(NSFetchedResultsController *)controller allowEditing:(BOOL)allowEditing allowAdding:(BOOL)allowAdding {
     self = [super init];
     if (self){
       self.tableView = tableView;
@@ -40,7 +34,6 @@
       self.allowAdding = allowAdding;
       self.delegate = delegate;
       self.fetchedResultsController = controller;
-      self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     }
     return self;
 }
@@ -88,12 +81,18 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
   if (editingStyle == UITableViewCellEditingStyleDelete) {
-    [UIAlertView alertViewWithTitle:@"Delete?" message:[self.delegate getConfirmDeleteMessage] cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] onDismiss:^(int buttonIndex) {
-      //Delete it!
+    NSString *message = [self.delegate getConfirmDeleteMessage];
+    if (message != nil){
+      [UIAlertView alertViewWithTitle:@"Delete?" message:message cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] onDismiss:^(int buttonIndex) {
+        //Delete it!
+        [self.delegate deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+      } onCancel:^{
+        [self.tableView setEditing:NO animated:YES];
+      }];
+    }
+    else {
       [self.delegate deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
-    } onCancel:^{
-      [self.tableView setEditing:NO animated:YES];
-    }];
+    }
   }
 }
 
@@ -126,13 +125,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.section == [[self.fetchedResultsController sections] count]){
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"New-Cell-Reuse"];
-    if (cell == nil){
-      cell = [[NSBundle mainBundle] loadNibNamed:@"NewItemCell" owner:self options:nil][0];
-    }
-    NewItemCell *newItemCell = (NewItemCell*)cell;
-    newItemCell.textFieldLabel.text = [self.delegate getNewItemText];
-    return cell;
+    return [self.delegate getNewItemCell];
   }
   else{
     UITableViewCell* cell = [self.delegate getATableCell];

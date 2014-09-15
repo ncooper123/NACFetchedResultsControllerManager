@@ -1,10 +1,7 @@
 //
 //  FetchedResultsControllerManager.h
-//  LA Creel
 //
 //  Created by Nathan Cooper on 10/8/13.
-//  Copyright (c) 2013 LDWF. All rights reserved.
-//
 
 /**
  * This class abstracts some details from the UIViewControllers fetching data from a
@@ -19,9 +16,14 @@
 
 @interface FetchedResultsControllerManager : NSObject <UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
--(id) initWithTableView:(UITableView *)tableView withDelegate:(id<FetchedDataTableViewDelegate>) delegate withFetchedResultsController:(NSFetchedResultsController *)controller allowEditing:(BOOL)allowEditing allowAdding:(BOOL)allowAdding;
--(void) start;
--(NSObject *) getObjectAtIndexPath:(NSIndexPath*)indexPath;
--(void) stop;
+/** Creates and initializes the instance.*/
+- (id) initWithTableView:(UITableView *)tableView withDelegate:(FetchedDataTableViewDelegate *) delegate withFetchedResultsController:(NSFetchedResultsController *)controller allowEditing:(BOOL)allowEditing allowAdding:(BOOL)allowAdding;
+
+/** Activates/deactivates the FetchedResultsControllerManager.*/
+- (void) start;
+- (void) stop;
+
+/** Returns the object associated with an index path, or nil for the New Item position.*/
+- (NSObject *) getObjectAtIndexPath:(NSIndexPath*) indexPath;
 
 @end
