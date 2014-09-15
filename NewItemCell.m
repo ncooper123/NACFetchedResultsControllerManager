@@ -12,6 +12,7 @@
 
 + (UITableViewCell *) makeNewItemCellWithText: (NSString *) text {
   NewItemCell *cell = [[NSBundle mainBundle] loadNibNamed:@"NewItemCell" owner:self options:nil][0];
+  [cell.imageViewIcon setImage: [UIImage imageNamed:@"new-icon.png"]];
   cell.textFieldLabel.text = text;
   return cell;
 }

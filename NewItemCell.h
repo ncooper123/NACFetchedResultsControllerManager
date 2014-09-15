@@ -11,6 +11,7 @@
 @interface NewItemCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *textFieldLabel;
+@property (retain, nonatomic) IBOutlet UIImageView *imageViewIcon;
 
 + (UITableViewCell *) makeNewItemCellWithText: (NSString *) text;
 
