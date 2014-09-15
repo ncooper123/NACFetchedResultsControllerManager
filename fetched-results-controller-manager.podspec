@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.requires_arc = true
   s.source = { :git => "https://github.com/ncooper123/fetched-results-controller-manager.git", :branch => "master", :tag => '0.0.2' }
-
-  s.source_files = "*.{h,m,xib,png}"
+  s.resources = ["new-icon.png"]
+  s.source_files = "*.{h,m,xib}"
 
 end
