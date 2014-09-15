@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Actions-list-add-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="p7o-gU-NU9">
+                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="new-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="p7o-gU-NU9">
                         <rect key="frame" x="10" y="8" width="33" height="28"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <constraints>
