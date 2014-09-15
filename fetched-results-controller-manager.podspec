@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
                    A helper class for connecting NSFetchedResultsControllers to UITableViews. Provides basic functionality for attaching/detaching the instance, along with a few other special-case tools that may be useful.
                    DESC
 
-  s.dependency = 'UIKitCategoryAdditions', :git => "https://github.com/MugunthKumar/UIKitCategoryAdditions.git"
+  s.dependency 'UIKitCategoryAdditions'
   s.homepage = "https://github.com/ncooper123/"
   s.license = { :type => 'BSD' }
   s.author = { "Nathan" => "ncooper@uno.edu" }
