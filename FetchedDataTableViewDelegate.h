@@ -26,7 +26,7 @@
 - (BOOL) requiresGlobalUpdate;
 
 /**Confirm deletion.*/
-- (NSString*) getConfirmDeleteMessage;
+- (NSString*) getConfirmDeleteMessageForObject:(NSManagedObject*)obj;
 
 /**Action to perform when deleting an object.*/
 - (void) deleteObject:(NSManagedObject*)obj;

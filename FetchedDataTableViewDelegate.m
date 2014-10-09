@@ -31,7 +31,7 @@
   return FALSE;
 }
 
-- (NSString*) getConfirmDeleteMessage {
+- (NSString*) getConfirmDeleteMessageForObject:(NSManagedObject*)obj {
   return @"Delete this entry?";
 }
 
