@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "FetchedResultsControllerManager"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "A helper class for connecting NSFetchedResultsControllers to UITableViews."
 
   s.description  = <<-DESC
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.author = { "Nathan" => "ncooper@uno.edu" }
   s.platform = :ios
   s.requires_arc = true
-  s.source = { :git => "https://github.com/ncooper123/fetched-results-controller-manager.git", :branch => "master", :tag => '0.0.2' }
+  s.source = { :git => "https://github.com/ncooper123/fetched-results-controller-manager.git", :branch => "master", :tag => '0.0.3' }
   s.resources = ["new-icon.png","*.xib"]
   s.source_files = "*.{h,m}"
 

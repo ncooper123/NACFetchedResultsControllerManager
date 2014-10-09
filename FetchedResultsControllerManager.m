@@ -82,17 +82,29 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
   NSManagedObject *obj = [self.fetchedResultsController objectAtIndexPath:indexPath];
   if (editingStyle == UITableViewCellEditingStyleDelete) {
-    NSString *message = [self.delegate getConfirmDeleteMessageForObject:obj];
-    if (message != nil){
-      [UIAlertView alertViewWithTitle:@"Delete?" message:message cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] onDismiss:^(int buttonIndex) {
-        //Delete it!
-        [self.delegate deleteObject:obj];
-      } onCancel:^{
-        [self.tableView setEditing:NO animated:YES];
-      }];
+    BOOL deleteable = [self.delegate canDeleteObjectAtIndexPath:indexPath withObject:obj];
+    if (!deleteable){
+        //Not deletable.
+        NSString *message = [self.delegate getUnableToDeleteMessageAtIndexPath:indexPath withObject:obj];
+        [UIAlertView alertViewWithTitle:@"Message" message:message cancelButtonTitle:@"OK" otherButtonTitles:@[] onDismiss:^(int buttonIndex) {
+            //Not applicable.
+        } onCancel:^{
+            [self.tableView setEditing:NO animated:YES];
+        }];
     }
     else {
-      [self.delegate deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        //Option to delete.
+        NSString *message = [self.delegate getConfirmDeleteMessageAtIndexPath:indexPath withObject:obj];
+        if (message != nil){
+            [UIAlertView alertViewWithTitle:@"Delete?" message:message cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] onDismiss:^(int buttonIndex) {
+                [self.delegate deleteObject:obj];
+            } onCancel:^{
+                [self.tableView setEditing:NO animated:YES];
+            }];
+        }
+        else {
+            [self.delegate deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        }
     }
   }
 }

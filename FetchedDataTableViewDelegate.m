@@ -31,8 +31,16 @@
   return FALSE;
 }
 
-- (NSString*) getConfirmDeleteMessageForObject:(NSManagedObject*)obj {
+- (NSString*) getConfirmDeleteMessageAtIndexPath:(NSIndexPath*)path withObject:(NSManagedObject*)obj {
   return @"Delete this entry?";
+}
+
+- (NSString*) getUnableToDeleteMessageAtIndexPath:(NSIndexPath*)path withObject:(NSManagedObject *)obj {
+    return @"You cannnot delete this entry.";
+}
+
+- (BOOL) canDeleteObjectAtIndexPath:(NSIndexPath*)path withObject:(NSManagedObject *)obj {
+    return TRUE;
 }
 
 - (void) deleteObject:(NSManagedObject*)obj {

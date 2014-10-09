@@ -26,7 +26,13 @@
 - (BOOL) requiresGlobalUpdate;
 
 /**Confirm deletion.*/
-- (NSString*) getConfirmDeleteMessageForObject:(NSManagedObject*)obj;
+- (NSString*) getConfirmDeleteMessageAtIndexPath:(NSIndexPath*)path withObject:(NSManagedObject*)obj;
+
+/**Explain why you cannot delete it.*/
+- (NSString*) getUnableToDeleteMessageAtIndexPath:(NSIndexPath*)path withObject:(NSManagedObject*)obj;
+
+/**Whether you can delete thi object (if deletions are turned on, that is).*/
+- (BOOL) canDeleteObjectAtIndexPath:(NSIndexPath*)path withObject:(NSManagedObject *)obj;
 
 /**Action to perform when deleting an object.*/
 - (void) deleteObject:(NSManagedObject*)obj;
