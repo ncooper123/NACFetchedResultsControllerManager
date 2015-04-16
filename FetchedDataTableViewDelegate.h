@@ -40,4 +40,10 @@
 /**Section name for the new item table.*/
 - (NSString*) getNewItemSectionName;
 
+/**Perform a confirmation with callbacks.*/
+- (void) performConfirmationWithTitle:(NSString*)title withText:(NSString*) text withConfirmation:(void(^)()) confirmation withCancellation:(void(^)()) cancellation;
+
+/**Perform a message.*/
+- (void) displayMessageWithTitle:(NSString*)title withText:(NSString*)text;
+
 @end

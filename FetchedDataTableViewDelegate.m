@@ -53,4 +53,14 @@
     return @"New Item";
 }
 
+- (void) performConfirmationWithTitle:(NSString*)title withText:(NSString*) text withConfirmation:(void(^)()) confirmation withCancellation:(void(^)()) cancellation {
+    NSLog(@"Skipping confirmation: %@",title);
+    confirmation();
+    
+}
+
+- (void) displayMessageWithTitle:(NSString*)title withText:(NSString*)text{
+    NSLog(@"Skipping message: %@", title);
+}
+
 @end

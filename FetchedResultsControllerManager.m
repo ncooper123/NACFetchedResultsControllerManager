@@ -4,7 +4,6 @@
 //
 
 #import "FetchedResultsControllerManager.h"
-#import "UIAlertView+MKBlockAdditions.h"
 
 @interface FetchedResultsControllerManager ()
 
@@ -86,19 +85,15 @@
     if (!deleteable){
         //Not deletable.
         NSString *message = [self.delegate getUnableToDeleteMessageAtIndexPath:indexPath withObject:obj];
-        [UIAlertView alertViewWithTitle:@"Message" message:message cancelButtonTitle:@"OK" otherButtonTitles:@[] onDismiss:^(int buttonIndex) {
-            //Not applicable.
-        } onCancel:^{
-            [self.tableView setEditing:NO animated:YES];
-        }];
+        [self.delegate displayMessageWithTitle:@"Message" withText:message];
     }
     else {
         //Option to delete.
         NSString *message = [self.delegate getConfirmDeleteMessageAtIndexPath:indexPath withObject:obj];
         if (message != nil){
-            [UIAlertView alertViewWithTitle:@"Delete?" message:message cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] onDismiss:^(int buttonIndex) {
-                [self.delegate deleteObject:obj];
-            } onCancel:^{
+            [self.delegate performConfirmationWithTitle:@"Delete?" withText:message withConfirmation:^{
+                 [self.delegate deleteObject:obj];
+            } withCancellation:^{
                 [self.tableView setEditing:NO animated:YES];
             }];
         }
@@ -200,6 +195,8 @@
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
             break;
     }
 }
