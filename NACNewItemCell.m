@@ -11,7 +11,7 @@
 @implementation NACNewItemCell
 
 + (UITableViewCell *) makeNewItemCellWithText: (NSString *) text {
-  NACNewItemCell *cell = [[NSBundle mainBundle] loadNibNamed:@"NewItemCell" owner:self options:nil][0];
+  NACNewItemCell *cell = [[NSBundle mainBundle] loadNibNamed:@"NACNewItemCell" owner:self options:nil][0];
   [cell.imageViewIcon setImage: [UIImage imageNamed:@"new-icon.png"]];
   cell.textFieldLabel.text = text;
   return cell;
