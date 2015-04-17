@@ -5,7 +5,7 @@
 
 #import "NACFetchedResultsControllerManager.h"
 
-@interface FetchedResultsControllerManager ()
+@interface NACFetchedResultsControllerManager ()
 
 @property (strong, nonatomic) UITableView* tableView;
 @property (strong, nonatomic) NSFetchedResultsController* fetchedResultsController;
@@ -14,7 +14,7 @@
 
 @end
 
-@implementation FetchedResultsControllerManager
+@implementation NACFetchedResultsControllerManager
 
 @synthesize tableView = _tableView;
 @synthesize fetchedResultsController = _fetchedResultsController;
@@ -25,7 +25,7 @@
 /**
  * Initializes a FetchedResultsControllerManager with a given UITableView, delegate, and NSFetchedResultsController.
  */
--(id) initWithTableView:(UITableView *)tableView withDelegate:(FetchedDataTableViewDelegate *) delegate withFetchedResultsController:(NSFetchedResultsController *)controller allowEditing:(BOOL)allowEditing allowAdding:(BOOL)allowAdding {
+-(id) initWithTableView:(UITableView *)tableView withDelegate:(NACFetchedDataTableViewDelegate *) delegate withFetchedResultsController:(NSFetchedResultsController *)controller allowEditing:(BOOL)allowEditing allowAdding:(BOOL)allowAdding {
     self = [super init];
     if (self){
       self.tableView = tableView;
