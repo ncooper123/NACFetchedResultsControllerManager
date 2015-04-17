@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewItemCell : UITableViewCell
+@interface NACNewItemCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *textFieldLabel;
 @property (retain, nonatomic) IBOutlet UIImageView *imageViewIcon;

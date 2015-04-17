@@ -1,5 +1,5 @@
 //
-//  FetchedResultsControllerManager.h
+//  NACFetchedResultsControllerManager.h
 //
 //  Created by Nathan Cooper on 10/8/13.
 
@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface FetchedResultsControllerManager : NSObject <UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface NACFetchedResultsControllerManager : NSObject <UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
 /** Creates and initializes the instance.*/
 - (id) initWithTableView:(UITableView *)tableView withDelegate:(FetchedDataTableViewDelegate *) delegate withFetchedResultsController:(NSFetchedResultsController *)controller allowEditing:(BOOL)allowEditing allowAdding:(BOOL)allowAdding;

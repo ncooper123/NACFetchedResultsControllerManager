@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 LDWF. All rights reserved.
 //
 
-#import "NewItemCell.h"
+#import "NACNewItemCell.h"
 
-@implementation NewItemCell
+@implementation NACNewItemCell
 
 + (UITableViewCell *) makeNewItemCellWithText: (NSString *) text {
   NewItemCell *cell = [[NSBundle mainBundle] loadNibNamed:@"NewItemCell" owner:self options:nil][0];

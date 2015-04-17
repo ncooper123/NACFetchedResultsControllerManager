@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 LDWF. All rights reserved.
 //
 
-#import "FetchedDataTableViewDelegate.h"
+#import "NACFetchedDataTableViewDelegate.h"
 #import "NewItemCell.h"
 
-@implementation FetchedDataTableViewDelegate
+@implementation NACFetchedDataTableViewDelegate
 
 - (void)configureCell:(UITableViewCell *)cell withObject: (NSObject *)fetchedObject atIndexPath: (NSIndexPath*)indexPath {
   return;

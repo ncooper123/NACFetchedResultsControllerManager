@@ -1,15 +1,15 @@
 //
-//  FetchedResultsControllerManager.m
+//  NACFetchedResultsControllerManager.m
 //  Created by Nathan Cooper on 10/8/13.
 //
 
-#import "FetchedResultsControllerManager.h"
+#import "NACFetchedResultsControllerManager.h"
 
 @interface FetchedResultsControllerManager ()
 
 @property (strong, nonatomic) UITableView* tableView;
 @property (strong, nonatomic) NSFetchedResultsController* fetchedResultsController;
-@property (strong, nonatomic) FetchedDataTableViewDelegate *delegate;
+@property (strong, nonatomic) NACFetchedDataTableViewDelegate *delegate;
 @property BOOL allowEditing, allowAdding;
 
 @end
