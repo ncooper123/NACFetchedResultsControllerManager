@@ -10,14 +10,14 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "FetchedDataTableViewDelegate.h"
+#import "NACFetchedDataTableViewDelegate.h"
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
 @interface NACFetchedResultsControllerManager : NSObject <UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
 /** Creates and initializes the instance.*/
-- (id) initWithTableView:(UITableView *)tableView withDelegate:(FetchedDataTableViewDelegate *) delegate withFetchedResultsController:(NSFetchedResultsController *)controller allowEditing:(BOOL)allowEditing allowAdding:(BOOL)allowAdding;
+- (id) initWithTableView:(UITableView *)tableView withDelegate:(NACFetchedDataTableViewDelegate *) delegate withFetchedResultsController:(NSFetchedResultsController *)controller allowEditing:(BOOL)allowEditing allowAdding:(BOOL)allowAdding;
 
 /** Activates/deactivates the FetchedResultsControllerManager.*/
 - (void) start;

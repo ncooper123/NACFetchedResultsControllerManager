@@ -7,7 +7,7 @@
 //
 
 #import "NACFetchedDataTableViewDelegate.h"
-#import "NewItemCell.h"
+#import "NACNewItemCell.h"
 
 @implementation NACFetchedDataTableViewDelegate
 
@@ -20,7 +20,7 @@
 }
 
 - (UITableViewCell *) getNewItemCell {
-  return [NewItemCell makeNewItemCellWithText:[self getNewItemText]];
+  return [NACNewItemCell makeNewItemCellWithText:[self getNewItemText]];
 }
 
 - (NSString *) getNewItemText {
