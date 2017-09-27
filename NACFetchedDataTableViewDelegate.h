@@ -41,7 +41,7 @@
 - (NSString*) getNewItemSectionName;
 
 /**Perform a confirmation with callbacks.*/
-- (void) performConfirmationWithTitle:(NSString*)title withText:(NSString*) text withConfirmation:(void(^)()) confirmation withCancellation:(void(^)()) cancellation;
+- (void) performConfirmationWithTitle:(NSString*)title withText:(NSString*) text withConfirmation:(void(^)(void)) confirmation withCancellation:(void(^)(void)) cancellation;
 
 /**Perform a message.*/
 - (void) displayMessageWithTitle:(NSString*)title withText:(NSString*)text;

@@ -53,7 +53,7 @@
     return @"New Item";
 }
 
-- (void) performConfirmationWithTitle:(NSString*)title withText:(NSString*) text withConfirmation:(void(^)()) confirmation withCancellation:(void(^)()) cancellation {
+- (void) performConfirmationWithTitle:(NSString*)title withText:(NSString*) text withConfirmation:(void(^)(void)) confirmation withCancellation:(void(^)(void)) cancellation {
     NSLog(@"Skipping confirmation: %@",title);
     confirmation();
     
